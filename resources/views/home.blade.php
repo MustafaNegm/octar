@@ -11,9 +11,10 @@
             <img src="{{asset('assets/')}}/img/ofc.png"  class="img-responsive">
         </div>
         <a class="dropdown-item" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-            <h4><a href="#" class="lg-out"><i class="out"></i> Sign out</a></h4>
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <h4><a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="lg-out"><i class="out"></i> Sign out</a></h4>
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -67,6 +68,8 @@
         </div>
     </div>
 @endsection
+
+@if(count(auth()->user()->trails) > 0)
 <div class="modal fade" id="squarespaceModal-8" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -88,3 +91,4 @@
         </div>
     </div>
 </div>
+@endif
