@@ -24,5 +24,5 @@ Route::post('/home/new', 'HomeController@store')->name('home.store');
 
 Route::get('/home/{id}', 'HomeController@show')->name('home.show');
 Route::get('/home/edit/{id}', 'HomeController@edit')->name('home.edit');
-Route::put('/home/edit/{id}', 'HomeController@update')->name('home.edit');
+Route::put('/home/update/{id}', 'HomeController@update')->name('home.update');
 Route::delete('/home/{id}/delete', 'HomeController@delete')->name('home.delete');

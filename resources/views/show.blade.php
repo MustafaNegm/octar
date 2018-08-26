@@ -160,7 +160,7 @@
                             <label style="text-align:left; font-weight:normal; width:100%">Statistical Significance:</label>
                             <div class="nw-wdth2">
                                 <label style="width:85px">
-                                    <input type="radio" name="randomization1" checked value="Yes" id="randomization_0">
+                                    <input type="radio" name="randomization5" checked value="Yes" id="randomization_0">
                                     {{$trail->statistical_significance}}</label>
                             </div>
                         </div>
