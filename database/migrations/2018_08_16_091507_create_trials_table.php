@@ -24,7 +24,7 @@ class CreateTrialsTable extends Migration
             $table->string('octar_nb');
             $table->string('category');
             $table->string('sub_category');
-            $table->string('study_type');
+//            $table->string('study_type');
             $table->string('blinding');
             $table->text('description');
             $table->string('patient_profile');

@@ -119,10 +119,20 @@
                         <div class="clearfix"></div>
                         <div class="col-md-6 col-sm-6 col-xs-12 lft">
                             <div class="form-group">
-                                <label>Study type</label>
+                                <label>Study type </label>
                                 <select required name="study_type[]" id="maxOption2" class="selectpicker slct wdth form-control" multiple data-max-options="10">
                                     @foreach($study_types as $study_type)
-                                        <option @if(str_contains($trail->$study_type,$study_type->name)) selected @endif  value="{{$study_type->name}}">{{$study_type->name}}</option>
+                                        @php $count=0;@endphp
+                                        @foreach($trail->study_types as $item)
+                                            @if($item->id == $study_type->id)
+                                                <option  selected  value="{{$study_type->id}}">{{$study_type->name}}</option>
+                                                @php $count++ @endphp
+                                                @break
+                                            @endif
+                                        @endforeach
+                                        @if($count == 0)
+                                            <option  value="{{$study_type->id}}">{{$study_type->name}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

@@ -121,7 +121,7 @@
                                 <label>Study type</label>
                                 <select required name="study_type[]" id="maxOption2" class="selectpicker slct wdth form-control" multiple data-max-options="10">
                                     @foreach($study_types as $study_type)
-                                        <option value="{{$study_type->name}}">{{$study_type->name}}</option>
+                                        <option value="{{$study_type->id}}">{{$study_type->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -213,10 +213,10 @@
                                 </div>
                                 <p class="text-center">
                                     <label style="text-align:center; width:48%">
-                                        <input type="radio" name="statistical_significance" value="Significant" id="randomization_0">
+                                        <input type="radio" required name="statistical_significance" value="Significant" id="randomization_0">
                                         Significant</label>
                                     <label style="text-align:center; width:48%">
-                                        <input type="radio" name="statistical_significance" value="Non" id="randomization_1">
+                                        <input type="radio" required name="statistical_significance" value="Non" id="randomization_1">
                                         Non</label>
                                     <br>
                                 </p>

@@ -82,10 +82,13 @@
 
                     <div class="clearfix"></div>
                     <div class="col-md-6 col-sm-6 col-xs-12 lft">
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label>Study type:</label>
-                            <span class="blu-txt wdth no-bord">{{$trail->study_type}}</span>
-
+                            <div class="wdth no-bord">
+                                @foreach($trail->study_types as $study_type)
+                                    <div class="fstChoiceItem pdd bluu">{{$study_type->name}}</div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 lft">

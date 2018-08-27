@@ -21,6 +21,10 @@ class Trails extends Model
         return $this->hasMany(Keyword::class,'trials_id','id');
     }
 
+    public function study_types(){
+        return $this->belongsToMany(StudyType::class);
+    }
+
     public function category(){
         return $this->hasOne(Category::class,'category','id');
     }
@@ -30,11 +34,11 @@ class Trails extends Model
     }
 
     public function blind(){
-        return $this->hasOne(Blinding::class,'id','id');
+        return $this->hasOne(Blinding::class,'id','blinding');
     }
 
     public function end_point(){
-        return $this->hasOne(EndPoint::class,'id','id');
+        return $this->hasOne(EndPoint::class,'id','endpoint_type');
     }
 
 

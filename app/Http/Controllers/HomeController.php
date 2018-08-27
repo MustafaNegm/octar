@@ -11,6 +11,7 @@ use App\RelevantFigure;
 use App\StudyType;
 use App\SubCategory;
 use App\Trails;
+use App\TrailType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -85,6 +86,8 @@ class HomeController extends Controller
             'keywords' => 'required',
         ));
 
+//        dd($request->all());
+
         $trail = new Trails;
         $trail->user_id = auth()->user()->id;
         $trail->name = $request->name;
@@ -95,7 +98,6 @@ class HomeController extends Controller
         $trail->octar_nb = $request->octar_nb;
         $trail->category = SubCategory::find($request->category)->category->name;
         $trail->sub_category = SubCategory::find($request->category)->name;
-        $trail->study_type = implode(' ',$request->study_type);
         $trail->blinding = $request->blinding;
         $trail->patient_profile = $request->patient_profile;
         $trail->description = $request->description;
@@ -108,6 +110,17 @@ class HomeController extends Controller
         $trail->points_of_criticism = $request->points_of_criticism;
         $trail->link_to_text = $request->link_to_text;
         $trail->save();
+
+
+        $trail->study_types()->sync($request->study_type,false);
+
+//        for ($i=0;$i<sizeof($request->study_type);$i++){
+//            $type = new TrailType;
+//            $type->trial_id = $trail->id;
+//            $type->study_type_id = $request->study_type[$i];
+//            $type->save();
+//        }
+
 
 
         for ($i=0;$i<sizeof($request->arm_nb);$i++){
@@ -135,7 +148,8 @@ class HomeController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect(route('home'));
+
     }
 
     public function edit($id)
@@ -146,6 +160,7 @@ class HomeController extends Controller
         $endpoints = EndPoint::all();
         $blinding = Blinding::all();
         $study_types = StudyType::all();
+
         return view('edit',compact('trail','categories','subcategories','endpoints','blinding','study_types'));
     }
 
