@@ -37,7 +37,7 @@
         <a href="{{route('home')}}">
             <p class="trial-p"><i class="fa fa-home"></i> Back to Home</p>
         </a>
-        <h3 class="trail-h">ADD NEW TRIAL</h3>
+        <h3 class="trail-h">Update Your TRIAL</h3>
         <div class="row trials">
 
             <div class="col-md-11 col-sm-12 col-xs-12">
@@ -320,7 +320,7 @@
                         <div class="clearfix"></div>
                         <div class="col-md-6 col-sm-6 col-xs-12 lft">
                             <div class="form-group" >
-                                <label>Keywords</label>
+                                <label>New Keywords</label>
                                 <select class="multipleSelect form-control slct wdth" multiple name="keywords[]" required >
                                     <option value="Afghanistan">Afghanistan</option>
                                     <option value="Albania">Albania</option>

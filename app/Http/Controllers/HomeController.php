@@ -14,6 +14,7 @@ use App\Trails;
 use App\TrailType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Session;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $trails = Trails::where('user_id',auth()->user()->id)->paginate(8);
+        return view('home',compact('trails'));
     }
 
     public function show($id)
@@ -147,7 +149,7 @@ class HomeController extends Controller
             $keyword->save();
         }
 
-
+        Session::flash('success','Trial Added Successfully');
         return redirect(route('home'));
 
     }
@@ -233,6 +235,9 @@ class HomeController extends Controller
         }
 
 
+        $trail->study_types()->sync($request->study_type,false);
+
+
         for ($i=0;$i<sizeof($request->arm_nb);$i++){
             $arm = new Arm;
             $arm->trials_id = $trail->id;
@@ -256,14 +261,15 @@ class HomeController extends Controller
             $keyword->name = $request->keywords[$i];
             $keyword->save();
         }
-
+        Session::flash('success','Trial Updated Successfully');
         return redirect(route('home'));
     }
 
     public function delete($id)
     {
-        dd($id);
+//        dd($id);
         Trails::destroy($id);
+        Session::flash('success','Trial Deleted Successfully');
         return redirect()->back();
     }
 

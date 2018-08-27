@@ -30,7 +30,7 @@
                 <h3><a href="{{route('home.create')}}" class="btn btn-custom-3"><span>+</span> Add new trial</a></h3>
                 <div class="clearfix"></div>
                 <div class="all-trials">
-                    @foreach(auth()->user()->trails as $trail)
+                    @foreach($trails  as $trail)
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="trial">
                             <a href="{{url('/home/'.$trail->id)}}">
@@ -51,18 +51,8 @@
                     @endforeach
                 </div>
                 <div class="clearfix"></div>
+                {{$trails->links()}}
 
-                <ul class="pagination">
-                    <li><a href="#"><i class="icon fa fa-chevron-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#"><i class="icon fa fa-chevron-right"></i></a></li>
-                </ul>
 
             </div>
         </div>
